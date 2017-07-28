@@ -23,7 +23,7 @@
 ## is-node-x
 Tests if a value is a DOM Node.
 
-**Version**: 1.0.0  
+**Version**: 1.0.1  
 **Author**: Xotic750 <Xotic750@gmail.com>  
 **License**: [MIT](&lt;https://opensource.org/licenses/MIT&gt;)  
 **Copyright**: Xotic750  
@@ -44,7 +44,7 @@ This method tests if `value` is a DOM Node.
 var isNode = require('is-node-x');
 
 isNode(); // => false
-isNode({ nodeType. 1 }); // => false
+isNode({ nodeType: 1 }); // => false
 isNode(document); // => true
 isNode(document.createNode('div')); // => true
 ```

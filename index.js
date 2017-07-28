@@ -1,6 +1,6 @@
 /**
  * @file Tests if a value is a DOM Node.
- * @version 1.0.0
+ * @version 1.0.1
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -57,7 +57,7 @@ var $isNode = function isNode(value) {
  * var isNode = require('is-node-x');
  *
  * isNode(); // => false
- * isNode({ nodeType. 1 }); // => false
+ * isNode({ nodeType: 1 }); // => false
  * isNode(document); // => true
  * isNode(document.createNode('div')); // => true
  */
