@@ -23,16 +23,16 @@
 ## is-node-x
 Tests if a value is a DOM Node.
 
-**Version**: 1.0.1  
+**Version**: 1.0.2  
 **Author**: Xotic750 <Xotic750@gmail.com>  
 **License**: [MIT](&lt;https://opensource.org/licenses/MIT&gt;)  
 **Copyright**: Xotic750  
 <a name="exp_module_is-node-x--module.exports"></a>
 
-### `module.exports` ⇒ <code>boolean</code> ⏏
+### `module.exports(value)` ⇒ <code>boolean</code> ⏏
 This method tests if `value` is a DOM Node.
 
-**Kind**: Exported member  
+**Kind**: Exported function  
 **Returns**: <code>boolean</code> - True if a DOM Node, otherwise false.  
 
 | Param | Type | Description |

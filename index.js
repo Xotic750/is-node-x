@@ -1,6 +1,6 @@
 /**
  * @file Tests if a value is a DOM Node.
- * @version 1.0.1
+ * @version 1.0.2
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -28,7 +28,20 @@ if (element && documentInheritsNode === false) {
   hasChildNodes = element.hasChildNodes;
 }
 
-var $isNode = function isNode(value) {
+/**
+ * This method tests if `value` is a DOM Node.
+ *
+ * @param {*} value - The value to test.
+ * @returns {boolean} True if a DOM Node, otherwise false.
+ * @example
+ * var isNode = require('is-node-x');
+ *
+ * isNode(); // => false
+ * isNode({ nodeType: 1 }); // => false
+ * isNode(document); // => true
+ * isNode(document.createNode('div')); // => true
+ */
+module.exports = function isNode(value) {
   if (hasChildNodes && value && typeof value.nodeType === 'number') {
     if (value === document) {
       return true;
@@ -47,18 +60,3 @@ var $isNode = function isNode(value) {
 
   return false;
 };
-
-/**
- * This method tests if `value` is a DOM Node.
- *
- * @param {*} value The value to test.
- * @return {boolean} True if a DOM Node, otherwise false.
- * @example
- * var isNode = require('is-node-x');
- *
- * isNode(); // => false
- * isNode({ nodeType: 1 }); // => false
- * isNode(document); // => true
- * isNode(document.createNode('div')); // => true
- */
-module.exports = $isNode;
