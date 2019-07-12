@@ -22,11 +22,7 @@
 
 ## is-node-x
 Tests if a value is a DOM Node.
-
-**Version**: 1.0.2  
-**Author**: Xotic750 <Xotic750@gmail.com>  
-**License**: [MIT](&lt;https://opensource.org/licenses/MIT&gt;)  
-**Copyright**: Xotic750  
+ 
 <a name="exp_module_is-node-x--module.exports"></a>
 
 ### `module.exports(value)` ⇒ <code>boolean</code> ⏏
@@ -41,10 +37,10 @@ This method tests if `value` is a DOM Node.
 
 **Example**  
 ```js
-var isNode = require('is-node-x');
+import isNode from 'is-node-x';
 
-isNode(); // => false
-isNode({ nodeType: 1 }); // => false
-isNode(document); // => true
-isNode(document.createNode('div')); // => true
+console.log(isNode()); // => false
+console.logisNode({ nodeType: 1 })); // => false
+console.logisNode(document)); // => true
+console.logisNode(document.createNode('div')); // => true
 ```
