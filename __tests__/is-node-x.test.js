@@ -8,7 +8,6 @@ let hasSymbolSupport;
 let symbol;
 
 if (typeof Symbol === 'function') {
-  /* eslint-disable-next-line compat/compat */
   symbol = Symbol('');
   hasSymbolSupport = typeof symbol === 'symbol';
 }
@@ -179,14 +178,14 @@ describe('isNode', function() {
 
   it('should return `false` for other non-DOM objects', function() {
     expect.assertions(9);
-    /* eslint-disable-next-line prefer-rest-params */
+
     expect(isNode(arguments)).toBe(false, 'arguments');
     expect(isNode([])).toBe(false, 'Literal array');
     expect(isNode(new Array(6))).toBe(false, 'new Array');
     expect(isNode(Error)).toBe(false, 'Error constructor');
     expect(isNode(Math)).toBe(false, 'Math object');
     expect(isNode(/regex/)).toBe(false, 'Regex');
-    /* eslint-disable-next-line lodash/prefer-noop */
+
     expect(isNode(function() {})).toBe(false, 'Function');
     expect(isNode(new Date())).toBe(false, 'Date');
     expect(isNode({nodeType: 1})).toBe(false, 'Fake');
@@ -208,13 +207,13 @@ describe('isNode', function() {
 
   itMap('should return `false` for Map', function() {
     expect.assertions(1);
-    /* eslint-disable-next-line compat/compat */
+
     expect(isNode(new Map())).toBe(false);
   });
 
   itSet('should return `false` for Set', function() {
     expect.assertions(1);
-    /* eslint-disable-next-line compat/compat */
+
     expect(isNode(new Set())).toBe(false);
   });
 
