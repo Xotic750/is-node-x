@@ -32,7 +32,7 @@ const hasChildNodesFn = element && documentInheritsNode === false ? element.hasC
  * @param {*} [value] - The value to test.
  * @returns {boolean} True if a DOM Node, otherwise false.
  */
-export default function isNode(value) {
+const isNode = function isNode(value) {
   if (hasChildNodesFn && value && typeof value.nodeType === 'number') {
     if (value === document) {
       return true;
@@ -54,4 +54,6 @@ export default function isNode(value) {
   }
 
   return false;
-}
+};
+
+export default isNode;

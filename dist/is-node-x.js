@@ -2,11 +2,11 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2017",
-  "date": "2019-07-16T20:55:54.011Z",
+  "date": "2019-07-17T12:58:33.570Z",
   "describe": "",
   "description": "Tests if a value is a DOM Node.",
   "file": "is-node-x.js",
-  "hash": "03f4088366c6a5dbb2d8",
+  "hash": "ce38523e4b7dfb3849f8",
   "license": "MIT",
   "version": "2.0.6"
 }
@@ -129,7 +129,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return isNode; });
 /** @type {BooleanConstructor} */
 var castBoolean = true.constructor;
 
@@ -165,7 +164,7 @@ var hasChildNodesFn = element && documentInheritsNode === false ? element.hasChi
  * @returns {boolean} True if a DOM Node, otherwise false.
  */
 
-function isNode(value) {
+var isNode = function isNode(value) {
   if (hasChildNodesFn && value && typeof value.nodeType === 'number') {
     if (value === document) {
       return true;
@@ -185,7 +184,9 @@ function isNode(value) {
   }
 
   return false;
-}
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (isNode);
 
 
 
