@@ -1,10 +1,12 @@
-<a href="https://travis-ci.org/Xotic750/is-node-x"
+<a
+  href="https://travis-ci.org/Xotic750/is-node-x"
   title="Travis status">
 <img
   src="https://travis-ci.org/Xotic750/is-node-x.svg?branch=master"
   alt="Travis status" height="18">
 </a>
-<a href="https://david-dm.org/Xotic750/is-node-x"
+<a
+  href="https://david-dm.org/Xotic750/is-node-x"
   title="Dependency status">
 <img src="https://david-dm.org/Xotic750/is-node-x/status.svg"
   alt="Dependency status" height="18"/>
@@ -15,15 +17,23 @@
 <img src="https://david-dm.org/Xotic750/is-node-x/dev-status.svg"
   alt="devDependency status" height="18"/>
 </a>
-<a href="https://badge.fury.io/js/is-node-x"
+<a
+  href="https://badge.fury.io/js/is-node-x"
   title="npm version">
 <img src="https://badge.fury.io/js/is-node-x.svg"
   alt="npm version" height="18">
 </a>
-<a href="https://www.jsdelivr.com/package/npm/is-node-x"
+<a
+  href="https://www.jsdelivr.com/package/npm/is-node-x"
   title="jsDelivr hits">
 <img src="https://data.jsdelivr.com/v1/package/npm/is-node-x/badge?style=rounded"
   alt="jsDelivr hits" height="18">
+</a>
+<a
+  href="https://bettercodehub.com/results/Xotic750/is-node-x"
+  title="bettercodehub score">
+<img src="https://bettercodehub.com/edge/badge/Xotic750/is-node-x?branch=master"
+  alt="bettercodehub score" height="18">
 </a>
 
 <a name="module_is-node-x"></a>
