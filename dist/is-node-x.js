@@ -2,11 +2,11 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2017",
-  "date": "2019-07-27T13:15:43.594Z",
+  "date": "2019-07-27T18:52:37.473Z",
   "describe": "",
   "description": "Tests if a value is a DOM Node.",
   "file": "is-node-x.js",
-  "hash": "ce38523e4b7dfb3849f8",
+  "hash": "56e8b02059e3dbd10aee",
   "license": "MIT",
   "version": "2.0.22"
 }
@@ -129,8 +129,23 @@ return /******/ (function(modules) { // webpackBootstrap
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/** @type {BooleanConstructor} */
-var castBoolean = true.constructor;
+
+// CONCATENATED MODULE: ./node_modules/to-boolean-x/dist/to-boolean-x.esm.js
+/**
+ * The abstract operation ToBoolean converts argument to a value of type Boolean.
+ *
+ * @param {*} [value] - The value to be converted.
+ * @returns {boolean} 'true' if value is truthy; otherwise 'false'.
+ */
+var toBoolean = function toBoolean(value) {
+  return !!value;
+};
+
+/* harmony default export */ var to_boolean_x_esm = (toBoolean);
+
+
+// CONCATENATED MODULE: ./dist/is-node-x.esm.js
+
 
 var _ref = function init() {
   if (typeof document !== 'undefined') {
@@ -153,10 +168,10 @@ var _ref = function init() {
   };
 }(),
     documentInheritsNode = _ref.documentInheritsNode,
-    element = _ref.element,
+    is_node_x_esm_element = _ref.element,
     hasChildNodes = _ref.hasChildNodes;
 
-var hasChildNodesFn = element && documentInheritsNode === false ? element.hasChildNodes : hasChildNodes;
+var hasChildNodesFn = is_node_x_esm_element && documentInheritsNode === false ? is_node_x_esm_element.hasChildNodes : hasChildNodes;
 /**
  * This method tests if `value` is a DOM Node.
  *
@@ -164,7 +179,7 @@ var hasChildNodesFn = element && documentInheritsNode === false ? element.hasChi
  * @returns {boolean} True if a DOM Node, otherwise false.
  */
 
-var isNode = function isNode(value) {
+var is_node_x_esm_isNode = function isNode(value) {
   if (hasChildNodesFn && value && typeof value.nodeType === 'number') {
     if (value === document) {
       return true;
@@ -177,7 +192,7 @@ var isNode = function isNode(value) {
 
     if (documentInheritsNode === false) {
       try {
-        return castBoolean(element.cloneNode(false).appendChild(value));
+        return to_boolean_x_esm(is_node_x_esm_element.cloneNode(false).appendChild(value));
       } catch (ignore) {// empty
       }
     }
@@ -186,7 +201,7 @@ var isNode = function isNode(value) {
   return false;
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (isNode);
+/* harmony default export */ var is_node_x_esm = __webpack_exports__["default"] = (is_node_x_esm_isNode);
 
 
 

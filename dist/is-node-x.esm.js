@@ -1,5 +1,4 @@
-/** @type {BooleanConstructor} */
-var castBoolean = true.constructor;
+import toBoolean from 'to-boolean-x';
 
 var _ref = function init() {
   if (typeof document !== 'undefined') {
@@ -46,7 +45,7 @@ var isNode = function isNode(value) {
 
     if (documentInheritsNode === false) {
       try {
-        return castBoolean(element.cloneNode(false).appendChild(value));
+        return toBoolean(element.cloneNode(false).appendChild(value));
       } catch (ignore) {// empty
       }
     }
