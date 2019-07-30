@@ -2,11 +2,11 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2017",
-  "date": "2019-07-29T21:33:50.164Z",
+  "date": "2019-07-30T10:02:54.545Z",
   "describe": "",
   "description": "Tests if a value is a DOM Node.",
   "file": "is-node-x.js",
-  "hash": "56e8b02059e3dbd10aee",
+  "hash": "0b0a34e8c1b255c99c67",
   "license": "MIT",
   "version": "2.0.22"
 }
@@ -144,34 +144,103 @@ var toBoolean = function toBoolean(value) {
 /* harmony default export */ var to_boolean_x_esm = (toBoolean);
 
 
+// CONCATENATED MODULE: ./node_modules/attempt-x/dist/attempt-x.esm.js
+/**
+ * This method attempts to invoke the function, returning either the result or
+ * the caught error object. Any additional arguments are provided to the
+ * function when it's invoked.
+ *
+ * @param {Function} [fn] - The function to attempt.
+ * @param {...*} [args] - The arguments to invoke the function with.
+ * @returns {object} Returns an object of the result.
+ */
+var attempt = function attempt(fn) {
+  try {
+    for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
+
+    return {
+      threw: false,
+
+      /* eslint-disable-next-line babel/no-invalid-this */
+      value: fn.apply(this, args)
+    };
+  } catch (e) {
+    return {
+      threw: true,
+      value: e
+    };
+  }
+};
+
+/* harmony default export */ var attempt_x_esm = (attempt);
+
+
 // CONCATENATED MODULE: ./dist/is-node-x.esm.js
 
 
-var _ref = function init() {
-  if (typeof document !== 'undefined') {
-    try {
-      var testElement = document.createElement('div');
-      var _hasChildNodesFn = document.hasChildNodes;
-      return {
-        element: document.createElement('div'),
-        hasChildNodes: document.hasChildNodes,
-        documentInheritsNode: typeof _hasChildNodesFn.call(testElement) === 'boolean'
-      };
-    } catch (ignore) {// empty
+var doc = typeof document === 'undefined' ? null : document;
+var docHasChildNodes = doc ? doc.hasChildNodes : null;
+var is_node_x_esm_element = doc ? doc.createElement('div') : null;
+
+var is_node_x_esm_getDocInheritsNode = function getDocInheritsNode() {
+  var result = attempt_x_esm(function attemptee() {
+    return docHasChildNodes.call(is_node_x_esm_element);
+  });
+  return result.threw === false && typeof result.value === 'boolean';
+};
+
+var docInheritsNode = is_node_x_esm_getDocInheritsNode();
+var hasChildNodesFn = is_node_x_esm_element && docInheritsNode === false ? is_node_x_esm_element.hasChildNodes : docHasChildNodes;
+
+var is_node_x_esm_shouldTest = function shouldTest(value) {
+  return to_boolean_x_esm(hasChildNodesFn) && to_boolean_x_esm(value) && typeof value.nodeType === 'number';
+};
+
+var is_node_x_esm_hasChildNodes = function hasChildNodes(value) {
+  var result = attempt_x_esm.call(value, hasChildNodesFn);
+
+  if (result.threw === false) {
+    return typeof result.value === 'boolean';
+  }
+
+  return null;
+};
+
+var is_node_x_esm_canAppendChild = function canAppendChild(value) {
+  if (docInheritsNode === false) {
+    var result = attempt_x_esm(function attemptee() {
+      return is_node_x_esm_element.cloneNode(false).appendChild(value);
+    });
+
+    if (result.threw === false) {
+      return to_boolean_x_esm(result.value);
     }
   }
 
-  return {
-    element: null,
-    hasChildNodes: null,
-    documentInheritsNode: false
-  };
-}(),
-    documentInheritsNode = _ref.documentInheritsNode,
-    is_node_x_esm_element = _ref.element,
-    hasChildNodes = _ref.hasChildNodes;
+  return null;
+};
 
-var hasChildNodesFn = is_node_x_esm_element && documentInheritsNode === false ? is_node_x_esm_element.hasChildNodes : hasChildNodes;
+var performTests = function performTests(value) {
+  if (value === document) {
+    return true;
+  }
+
+  var result1 = is_node_x_esm_hasChildNodes(value);
+
+  if (result1 !== null) {
+    return result1;
+  }
+
+  var result2 = is_node_x_esm_canAppendChild(value);
+
+  if (result2 !== null) {
+    return result1;
+  }
+
+  return null;
+};
 /**
  * This method tests if `value` is a DOM Node.
  *
@@ -179,29 +248,20 @@ var hasChildNodesFn = is_node_x_esm_element && documentInheritsNode === false ? 
  * @returns {boolean} True if a DOM Node, otherwise false.
  */
 
-var is_node_x_esm_isNode = function isNode(value) {
-  if (hasChildNodesFn && value && typeof value.nodeType === 'number') {
-    if (value === document) {
-      return true;
-    }
 
-    try {
-      return typeof hasChildNodesFn.call(value) === 'boolean';
-    } catch (ignore) {// empty
-    }
+var isNode = function isNode(value) {
+  if (is_node_x_esm_shouldTest(value)) {
+    var result = performTests(value);
 
-    if (documentInheritsNode === false) {
-      try {
-        return to_boolean_x_esm(is_node_x_esm_element.cloneNode(false).appendChild(value));
-      } catch (ignore) {// empty
-      }
+    if (result !== null) {
+      return result;
     }
   }
 
   return false;
 };
 
-/* harmony default export */ var is_node_x_esm = __webpack_exports__["default"] = (is_node_x_esm_isNode);
+/* harmony default export */ var is_node_x_esm = __webpack_exports__["default"] = (isNode);
 
 
 

@@ -1,30 +1,66 @@
 import toBoolean from 'to-boolean-x';
+import attempt from 'attempt-x';
+var doc = typeof document === 'undefined' ? null : document;
+var docHasChildNodes = doc ? doc.hasChildNodes : null;
+var element = doc ? doc.createElement('div') : null;
 
-var _ref = function init() {
-  if (typeof document !== 'undefined') {
-    try {
-      var testElement = document.createElement('div');
-      var _hasChildNodesFn = document.hasChildNodes;
-      return {
-        element: document.createElement('div'),
-        hasChildNodes: document.hasChildNodes,
-        documentInheritsNode: typeof _hasChildNodesFn.call(testElement) === 'boolean'
-      };
-    } catch (ignore) {// empty
+var getDocInheritsNode = function getDocInheritsNode() {
+  var result = attempt(function attemptee() {
+    return docHasChildNodes.call(element);
+  });
+  return result.threw === false && typeof result.value === 'boolean';
+};
+
+var docInheritsNode = getDocInheritsNode();
+var hasChildNodesFn = element && docInheritsNode === false ? element.hasChildNodes : docHasChildNodes;
+
+var shouldTest = function shouldTest(value) {
+  return toBoolean(hasChildNodesFn) && toBoolean(value) && typeof value.nodeType === 'number';
+};
+
+var hasChildNodes = function hasChildNodes(value) {
+  var result = attempt.call(value, hasChildNodesFn);
+
+  if (result.threw === false) {
+    return typeof result.value === 'boolean';
+  }
+
+  return null;
+};
+
+var canAppendChild = function canAppendChild(value) {
+  if (docInheritsNode === false) {
+    var result = attempt(function attemptee() {
+      return element.cloneNode(false).appendChild(value);
+    });
+
+    if (result.threw === false) {
+      return toBoolean(result.value);
     }
   }
 
-  return {
-    element: null,
-    hasChildNodes: null,
-    documentInheritsNode: false
-  };
-}(),
-    documentInheritsNode = _ref.documentInheritsNode,
-    element = _ref.element,
-    hasChildNodes = _ref.hasChildNodes;
+  return null;
+};
 
-var hasChildNodesFn = element && documentInheritsNode === false ? element.hasChildNodes : hasChildNodes;
+var performTests = function performTests(value) {
+  if (value === document) {
+    return true;
+  }
+
+  var result1 = hasChildNodes(value);
+
+  if (result1 !== null) {
+    return result1;
+  }
+
+  var result2 = canAppendChild(value);
+
+  if (result2 !== null) {
+    return result1;
+  }
+
+  return null;
+};
 /**
  * This method tests if `value` is a DOM Node.
  *
@@ -32,22 +68,13 @@ var hasChildNodesFn = element && documentInheritsNode === false ? element.hasChi
  * @returns {boolean} True if a DOM Node, otherwise false.
  */
 
+
 var isNode = function isNode(value) {
-  if (hasChildNodesFn && value && typeof value.nodeType === 'number') {
-    if (value === document) {
-      return true;
-    }
+  if (shouldTest(value)) {
+    var result = performTests(value);
 
-    try {
-      return typeof hasChildNodesFn.call(value) === 'boolean';
-    } catch (ignore) {// empty
-    }
-
-    if (documentInheritsNode === false) {
-      try {
-        return toBoolean(element.cloneNode(false).appendChild(value));
-      } catch (ignore) {// empty
-      }
+    if (result !== null) {
+      return result;
     }
   }
 
