@@ -2,13 +2,13 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2017",
-  "date": "2019-07-31T19:16:04.631Z",
+  "date": "2019-07-31T21:45:11.865Z",
   "describe": "",
   "description": "Tests if a value is a DOM Node.",
   "file": "is-node-x.js",
   "hash": "0b0a34e8c1b255c99c67",
   "license": "MIT",
-  "version": "2.0.22"
+  "version": "2.0.23"
 }
 */
 (function webpackUniversalModuleDefinition(root, factory) {
