@@ -2,7 +2,7 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2017",
-  "date": "2019-08-15T17:23:26.726Z",
+  "date": "2019-08-20T08:31:53.172Z",
   "describe": "",
   "description": "Tests if a value is a DOM Node.",
   "file": "is-node-x.js",
